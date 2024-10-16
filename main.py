@@ -1,1 +1,1 @@
-print('欢迎来到 InsCode')
+print('欢迎来到 InsCode ')
