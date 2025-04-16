@@ -23,10 +23,10 @@ def load_env_vars():
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", None)
     OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", None)
-    AVIAILABLE_MODELS = os.getenv("AVIAILABLE_MODELS", None)
-    MODEL_LIST = AVIAILABLE_MODELS.split(",") if AVIAILABLE_MODELS else []
+    AVAILABLE_MODELS = os.getenv("AVAILABLE_MODELS", None)
+    MODEL_LIST = AVAILABLE_MODELS.split(",") if AVAILABLE_MODELS else []
     CURRENT_MODEL = None
-
+    
     if not OPENAI_API_KEY:
         raise ValueError("Please set OPENAI_API_KEY in your environment variables.")
     else:
@@ -37,10 +37,10 @@ def load_env_vars():
     else:
         print(f'✔️ OPENAI_BASE_URL: {OPENAI_BASE_URL}')
 
-    if not AVIAILABLE_MODELS:
-        raise ValueError("Please set AVIAILABLE_MODELS in your environment variables.")
+    if not AVAILABLE_MODELS:
+        raise ValueError("Please set AVAILABLE_MODELS in your environment variables.")
     else:
-        print(f'✔️ AVIAILABLE_MODELS: {AVIAILABLE_MODELS}')
+        print(f'✔️ AVAILABLE_MODELS: {AVAILABLE_MODELS}')
 
     return {
         "OPENAI_API_KEY": OPENAI_API_KEY,
@@ -55,13 +55,17 @@ env_vars = load_env_vars()
 
 with st.sidebar:
     env_vars["CURRENT_MODEL"] = st.selectbox(
-        "👇选择模型",
-        env_vars["MODEL_LIST"],
+        label="选择模型",
+        options=env_vars["MODEL_LIST"],
         index=0,
-        help="选择模型",
+        help="选择 LLM 模型的种类",
     )
     # 滑动条
-    env_vars['TEMPERATURE'] = st.slider("Temperature", 0.0, 1.0, 0.8)
+    env_vars['TEMPERATURE'] = st.slider(
+        label="Temperature",
+        min_value=0.0, max_value=1.0, value=0.8,
+        help="Temperature 参数用于控制 LLM 的输出多样性和确定性，高 Temperature 增加多样性但可能降低确定性，低 Temperature 则增加确定性但可能降低多样性。"
+    )
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [ChatMessage(role="assistant", content="🙃 有问题可以向我提问哦~")]

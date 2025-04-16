@@ -11,6 +11,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "dotenv>=0.9.9",
+    "just>=0.8.162",
     "langchain>=0.3.23",
     "langchain-openai>=0.3.13",
     "langchain-openapi>=0.1.1",
