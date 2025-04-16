@@ -1,0 +1,20 @@
+# pyproject.toml
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+default = true
+
+[project]
+name = "python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dotenv>=0.9.9",
+    "langchain>=0.3.23",
+    "langchain-openai>=0.3.13",
+    "langchain-openapi>=0.1.1",
+    "matplotlib>=3.10.1",
+    "pandas>=2.2.3",
+    "streamlit>=1.44.1",
+]
