@@ -4,6 +4,7 @@ from langchain_openai import ChatOpenAI
 import streamlit as st
 from dotenv import load_dotenv
 import os
+import time
 
 OPENAI_API_KEY = None
 OPENAI_BASE_URL = None
@@ -88,7 +89,7 @@ if prompt := st.chat_input(placeholder = "shift+enter 换行", max_chars = 2048)
             streaming=True, 
             callbacks=[stream_handler]
         )
-        print(f'===> \n{st.session_state.messages}')
+        print(f"{time.strftime('[%Y-%m-%d %H:%M:%S]', time.localtime())}==>{[message.content for message in st.session_state.messages]}")
         response = llm.invoke(st.session_state.messages)
         st.session_state.messages.append(ChatMessage(role="assistant", content=response.content))
         # print(env_vars)
