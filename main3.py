@@ -31,51 +31,51 @@ with st.sidebar:
         help="Temperature 参数用于控制 LLM 的输出多样性和确定性，高 Temperature 增加多样性但可能降低确定性，低 Temperature 则增加确定性但可能降低多样性。"
     )
 
+
+# Set up memory
+msgs = StreamlitChatMessageHistory(key="langchain_messages")
+if len(msgs.messages) == 0:
+    msgs.add_ai_message("How can I help you?")
+
+view_messages = st.expander("View the message contents in session state")
+
+
+# Set up the LangChain, passing in Message History
+
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", "你是一个正在与人类对话的AI聊天机器人"),
+        ("system", "You are an AI chatbot having a conversation with a human."),
         MessagesPlaceholder(variable_name="history"),
         ("human", "{question}"),
     ]
 )
-llm = ChatOpenAI(
+
+chain = prompt | ChatOpenAI(    
     openai_api_key=env_vars["OPENAI_API_KEY"], 
     model_name=env_vars["CURRENT_MODEL"], 
     temperature=env_vars["TEMPERATURE"], 
     base_url=env_vars["OPENAI_BASE_URL"], 
     streaming=True,
 )
-chain = prompt | llm
 chain_with_history = RunnableWithMessageHistory(
     chain,
     lambda session_id: msgs,
-    input_messages_key="question", # 输入变量名
-    history_messages_key="history", # 历史占位符变量名
+    input_messages_key="question",
+    history_messages_key="history",
 )
 
-# StreamlitChatMessageHistory 初始化（key 用于在 session_state 中唯一标识存储）
-msgs = StreamlitChatMessageHistory(key="langchain_messages")
-if len(msgs.messages) == 0:
-    msgs.add_ai_message("🙃 有问题可以向我提问哦~")
-
-# 从 StreamlitChatMessageHistory 渲染当前消息，自动区分角色 human 和 ai 消息
+# Render current messages from StreamlitChatMessageHistory
 for msg in msgs.messages:
     st.chat_message(msg.type).write(msg.content)
 
-# 用户输入处理逻辑
+# If user inputs a new prompt, generate and draw a new response
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
-    config = {"configurable": {"session_id": "user_123"}}
-    
-    # 创建消息容器并初始化
-    with st.chat_message("ai"):
-        response_container = st.empty()
-        full_response = ""
-        # 流式获取响应
-        for chunk in chain_with_history.stream({"question": prompt}, config):
-            if isinstance(chunk, AIMessageChunk):
-                full_response += chunk.content
-                response_container.markdown(full_response)
-        # 将完整响应加入历史
-        # msgs.add_ai_message(full_response)  
+    # Note: new messages are saved to history automatically by Langchain during run
+    config = {"configurable": {"session_id": "user_12345"}}
+    response = chain_with_history.invoke({"question": prompt}, config)
+    st.chat_message("ai").write(response.content)
 
+# Draw the messages at the end, so newly generated ones show up immediately
+with view_messages:
+    view_messages.json(st.session_state.langchain_messages)
