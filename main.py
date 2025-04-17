@@ -89,7 +89,7 @@ if prompt := st.chat_input(placeholder = "shift+enter 换行", max_chars = 2048)
             streaming=True, 
             callbacks=[stream_handler]
         )
-        print(f"{time.strftime('[%Y-%m-%d %H:%M:%S]', time.localtime())}==>{[message.content for message in st.session_state.messages]}")
+        print(f"{time.strftime('[%Y-%m-%d %H:%M:%S]', time.localtime())} [{env_vars["CURRENT_MODEL"]}] {[message.content for message in st.session_state.messages]}")
         response = llm.invoke(st.session_state.messages)
         st.session_state.messages.append(ChatMessage(role="assistant", content=response.content))
-        # print(env_vars)
+
