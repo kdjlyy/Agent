@@ -87,6 +87,7 @@ if prompt := st.chat_input(placeholder = "shift+enter 换行", max_chars = 2048)
             streaming=True, 
             callbacks=[stream_handler]
         )
+        print(f'===> \n{st.session_state.messages}')
         response = llm.invoke(st.session_state.messages)
         st.session_state.messages.append(ChatMessage(role="assistant", content=response.content))
         # print(env_vars)
