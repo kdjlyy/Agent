@@ -10,6 +10,7 @@ OPENAI_BASE_URL = None
 MODEL = None
 
 class StreamHandler(BaseCallbackHandler):
+    """继承 BaseCallbackHandler，通过 on_llm_new_token 方法捕获每个新生成的 token 并实时更新界面"""
     def __init__(self, container, initial_text=""):
         self.container = container
         self.text = initial_text
