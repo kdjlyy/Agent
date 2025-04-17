@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 
+
 @st.cache_data
 def load_env_vars():
     load_dotenv()
@@ -10,6 +11,7 @@ def load_env_vars():
     AVAILABLE_MODELS = os.getenv("AVAILABLE_MODELS", None)
     MODEL_LIST = AVAILABLE_MODELS.split(",") if AVAILABLE_MODELS else []
     CURRENT_MODEL = None
+    BOCHA_API_KEY = os.getenv("BOCHA_API_KEY", None)
     
     if not OPENAI_API_KEY:
         raise ValueError("Please set OPENAI_API_KEY in your environment variables.")
@@ -26,10 +28,16 @@ def load_env_vars():
     else:
         print(f'✔️ AVAILABLE_MODELS: {AVAILABLE_MODELS}')
 
+    if not BOCHA_API_KEY:
+        raise ValueError("Please set BOCHA_API_KEY in your environment variables.")
+    else:
+        print(f'✔️ BOCHA_API_KEY: {BOCHA_API_KEY}')
+
     return {
         "OPENAI_API_KEY": OPENAI_API_KEY,
         "OPENAI_BASE_URL": OPENAI_BASE_URL,
         "MODEL_LIST": MODEL_LIST,
         "CURRENT_MODEL": CURRENT_MODEL,
-        "TEMPERATURE": 0.8
+        "TEMPERATURE": 0.8,
+        "BOCHA_API_KEY": BOCHA_API_KEY,
     }
