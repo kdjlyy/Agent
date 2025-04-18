@@ -66,7 +66,7 @@ if prompt := st.chat_input(placeholder="shift+enter 换行"):
     bocha_tool = Tool(
         name="BochaWebSearch",
         func=bocha_websearch_tool,
-        description="使用 Bocha Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页 URL、网页摘要、网站名称、网站 Icon、网页发布时间等。"
+        description="使用 Bocha Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页 URL、网页摘要、网站名称、网页发布时间。"
     )
     tools = [bocha_tool] if env_vars['NET_ENABLE']=='打开' else []
     chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
