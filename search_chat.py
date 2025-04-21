@@ -5,7 +5,7 @@ from langchain_community.chat_message_histories import StreamlitChatMessageHisto
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
 import streamlit as st
-from utils.env_util import load_env_vars
+from utils.envs_util import load_env_vars
 from utils.search import bocha_websearch_tool
 
 # 仅首次执行
@@ -70,6 +70,7 @@ if prompt := st.chat_input(placeholder="shift+enter 换行"):
     )
     tools = [bocha_tool] if env_vars['NET_ENABLE']=='打开' else []
     chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
+    # AgentExecutor 过时了，不建议使用
     executor = AgentExecutor.from_agent_and_tools(
         agent=chat_agent,
         tools=tools,

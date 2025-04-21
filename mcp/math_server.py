@@ -2,7 +2,10 @@
 from mcp.server.fastmcp import FastMCP
 
 # 注册智能体
-mcp = FastMCP("Math")
+mcp = FastMCP("Math Demo")
+# SSE 方式
+# mcp = FastMCP("Math Demo", port=5000)
+# mcp.run(transport="sse")
 
 # @mcp.tool() 用于将普通函数注册为智能体可调用的工具
 @mcp.tool()

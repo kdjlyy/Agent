@@ -57,7 +57,7 @@ documents = [document_1, document_2, document_3, document_4, document_5]
 vector_store.add_documents(documents=documents, ids=["doc1", "doc2", "doc3", "doc4", "doc5"])
 
 query = "香蕉能促进消化"
-# 相似性搜索
+# 相似性搜索 cosine_similarity
 docs = vector_store.similarity_search(query, k=3, filter=lambda doc: doc.metadata["tag"] == "1")
 print(docs)
 

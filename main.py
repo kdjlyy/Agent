@@ -1,11 +1,11 @@
+import time
+
+import streamlit as st
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.schema import ChatMessage
 from langchain_openai import ChatOpenAI
-import streamlit as st
-from dotenv import load_dotenv
-import os
-import time
-from utils.env_util import load_env_vars
+
+from utils.envs_util import load_env_vars
 
 # 仅首次执行
 env_vars = load_env_vars()
