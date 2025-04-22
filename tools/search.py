@@ -1,9 +1,9 @@
 import requests
 from langchain.tools import tool
-from utils.env_util import load_env_vars
+from utils.envs_util import load_env_vars
 
 @tool
-def bocha_websearch_tool(query: str, count: int = 5) -> str:
+def bocha_websearch_tool(query: str, count: int = 1) -> str:
     """
     使用 Bocha Web Search API 进行网页搜索。
     参数:

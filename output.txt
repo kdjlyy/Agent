@@ -1,0 +1,185 @@
+✔️ OPENAI_API_KEY: sk-hybehttizlquaobtbilikijqmuuyzxizjhkfqqlpkkvcvojw
+✔️ DEFAULT_MODEL: Qwen/QwQ-32B
+✔️ OPENAI_BASE_URL: https://api.siliconflow.cn/v1
+================================ Human Message =================================
+
+I'm learning LangGraph. Could you do some research on it for me?
+================================== Ai Message ==================================
+Tool Calls:
+  在线搜索 (01965c7150eedc0d68588146c4a25ae7)
+ Call ID: 01965c7150eedc0d68588146c4a25ae7
+  Args:
+    __arg1: LangGraph
+✔️ OPENAI_API_KEY: sk-hybehttizlquaobtbilikijqmuuyzxizjhkfqqlpkkvcvojw
+✔️ OPENAI_BASE_URL: https://api.siliconflow.cn/v1
+✔️ AVAILABLE_MODELS: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B,THUDM/GLM-Z1-32B-0414,Qwen/Qwen2.5-VL-32B-Instruct,Qwen/QwQ-32B,deepseek-ai/DeepSeek-V3,deepseek-ai/DeepSeek-R1
+✔️ BOCHA_API_KEY: sk-b71f4859decc427e99f7b0e3fa483469
+================================= Tool Message =================================
+Name: 在线搜索
+
+引用: 1
+标题: LangGraph实战 - 哥不是小萝莉 - 博客园
+URL: https://www.cnblogs.com/smartloli/p/18276355
+摘要: 1.概述 前段时间LangChain发布了LangGraph,它引起了很多关注｡LangGraph 的主要优势在于它能够实现循环工作流,这对于在 LLM 应用程序中模拟类似代理的行为至关重要｡ 2.内容 LangGraph是一个功能强大的库,用于构建基于大型语言模型(LLM)的有状态､多参与者应用程序｡它旨在创建代理和多代理工作流,以实现复杂的任务和交互｡ 2.1 LangGraph的核心优势 LangGraph在设计上具有三个核心优势,使其成为构建代理应用程序的首选框架之一｡ 循环支持 :LangGraph允许用户定义涉及循环的流程,这对于大多数代理架构来说是必不可少的｡这种能力使LangGraph有别于基于有向无环图(DAG)的解决方案,后者不直接支持循环｡ 细粒度控制 :作为一个非常低级的框架,LangGraph为用户提供了对应用程序的流程和状态的细粒度控制｡这对于创建可靠､可预测的代理至关重要,因为代理需要在复杂的环境中做出明智的决策｡ 内置持久性 :LangGraph还包括内置的持久性功能,使代理能够记住过去的交互并使用这些信息来指导未来的决策｡这种持久性还支持高级的人机循环,使代理能够与人类用户进行更自然､更有效的交互｡ 2.2 LangGraph的灵感来源 LangGraph的灵感来自两个著名的数据处理框架:Pregel和Apache Beam｡Pregel是一个用于大规模图处理的系统,它使用一种称为“Pregel模型”的编程模型,该模型基于图的遍历和消息传递｡
+网站名称: 博客园
+发布时间: 2024-06-30T14:21:00Z
+================================== Ai Message ==================================
+
+根据搜索结果，LangGraph 是由 LangChain 团队提出的一个专注于构建基于大型语言模型（LLM）的有状态、多参与者应用程序的框架。以下是其关键特性和优势总结：
+
+---
+
+### **核心优势**
+1. **循环工作流支持**  
+   - 允许定义包含循环的流程（例如代理与环境的交互循环），突破传统基于有向无环图（DAG）框架的限制，更适合模拟代理（Agent）的行为。
+   - 适用于需要迭代处理或人机交互的复杂场景。
+
+2. **细粒度控制**  
+   - 提供对程序流程和状态的极高的控制权，开发者可以灵活调整步骤顺序、状态管理及决策逻辑。
+   - 这对于构建可靠、可预测的代理至关重要。
+
+3. **内置持久化能力**  
+   - 支持记录过去交互并利用历史数据优化未来决策（例如记忆系统）。
+   - 促进自然的人机交互循环，例如用户与代理的多轮对话。
+
+---
+
+### **设计灵感**
+LangGraph 的设计灵感来源于两大技术：
+- **Pregel**（大规模图处理系统）：借鉴了其基于消息传递和迭代遍历的模型。
+- **Apache Beam**（统一编程模型处理批流数据）：抽象了数据处理流程的灵活性。
+
+---
+
+### **适用场景**
+- **代理与多代理系统**：如自动化客服、虚拟助手、智能决策系统。
+- **复杂任务工作流**：需要循环、状态维护和多方协作的场景（如文档生成、跨领域推理）。
+- **人机协作流程**：例如需要人工介入或反馈的半自动任务。
+
+---
+
+### **学习建议**
+1. 可参考您提供的 [LangGraph实战文章（博客园）](https://www.cnblogs.com/smartloli/p/18276355) 了解具体用例。
+2. 查看 [LangChain 官方文档](https://langchain.github.io/) 获取 LangGraph 的最新信息和代码示例。
+3. 探索开源社区案例，观察实际项目中如何组合 LLM 与 LangGraph 的循环流程。
+
+如果需要更具体的细节（如代码示例或与同类框架的对比），可以进一步补充信息！
+================================ Human Message =================================
+
+Ya that's helpful. Maybe I'll build an autonomous agent with it!
+================================== Ai Message ==================================
+
+That’s exciting! Building an autonomous agent with LangGraph is a great project. Here’s how you can get started and keep momentum going:
+
+---
+
+### **Step 1: Start Small with a Minimal Agent**
+- **Choose a simple use case**:  
+  Begin with a basic agent task, like a **weather-checking bot** or a **document summarizer**. This lets you focus on understanding LangGraph's core concepts without overwhelming complexity.
+- **Core Components**:  
+  Use LangGraph’s loops and persistent states to create a feedback loop (e.g., an agent that re-tries a task if it fails).
+
+---
+
+### **Step 2: Leverage Resources**
+- **Official Documentation & Tutorials**:  
+  Check [LangChain’s official site](https://langchain.github.io/) for LangGraph guides and code examples.  
+- **Community Projects**:  
+  Explore GitHub for open-source LangGraph agents (search for keywords like "langgraph example").  
+- **The Blog Post You Mentioned**:  
+  The [LangGraph实战 article](https://www.cnblogs.com/smartloli/p/18276355) you provided has practical insights—dig deeper into its code snippets!
+
+---
+
+### **Step 3: Key Considerations**  
+- **Debugging Loops**:  
+  Since LangGraph allows cycles, ensure your agent avoids infinite loops (e.g., set retry limits).  
+- **State Management**:  
+  Experiment with LangGraph’s persistence features (e.g., saving conversation history for context-aware responses).  
+- **LLM Integration**:  
+  Pair LangGraph with LLMs like Llama, GPT, or others via LangChain’s integration tools.  
+
+---
+
+### **Step 4: Iterate & Expand**  
+- Build a prototype first, then add complexity (e.g., multi-agent coordination for a ToDo manager).  
+- Test interactions (e.g., simulate user inputs, check how the agent adapts).
+
+---
+
+### **Example Idea**  
+Create a **Personal Assistant Agent** that:  
+1. Takes a user query (e.g., "Book a flight to Paris").  
+2. Uses LangGraph loops to search for flights, check prices, and confirm with the user.  
+3. Stores preferences (via persistence) to streamline future requests.  
+
+---
+
+### **Community & Support**  
+- Join the [LangChain Discord](https://discord.gg/langchain) or [Apache Beam Slack](https://apache-beam-slack.herokuapp.com/) for inspiration.  
+- If stuck, share code snippets on forums like Stack Overflow or GitHub Issues!
+
+---
+
+You’re on the right track! Start building, and celebrate small wins—it’s rewarding to see an agent you’ve designed "think" and act autonomously. Let me know if you need help troubleshooting specific parts! 😊
+Num Messages: 6   Next: ()
+--------------------------------------------------------------------------------
+Num Messages: 5   Next: ('chatbot',)
+--------------------------------------------------------------------------------
+Num Messages: 4   Next: ('__start__',)
+--------------------------------------------------------------------------------
+Num Messages: 4   Next: ()
+--------------------------------------------------------------------------------
+Num Messages: 3   Next: ('chatbot',)
+--------------------------------------------------------------------------------
+Num Messages: 2   Next: ('tools',)
+--------------------------------------------------------------------------------
+Num Messages: 1   Next: ('chatbot',)
+--------------------------------------------------------------------------------
+Num Messages: 0   Next: ('__start__',)
+--------------------------------------------------------------------------------
+********************************************************************************
+('tools',)
+{'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1f01f4d1-dee6-6383-8001-ecb6fd79030f'}}
+********************************************************************************
+================================== Ai Message ==================================
+Tool Calls:
+  在线搜索 (01965c7150eedc0d68588146c4a25ae7)
+ Call ID: 01965c7150eedc0d68588146c4a25ae7
+  Args:
+    __arg1: LangGraph
+✔️ OPENAI_API_KEY: sk-hybehttizlquaobtbilikijqmuuyzxizjhkfqqlpkkvcvojw
+✔️ OPENAI_BASE_URL: https://api.siliconflow.cn/v1
+✔️ AVAILABLE_MODELS: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B,THUDM/GLM-Z1-32B-0414,Qwen/Qwen2.5-VL-32B-Instruct,Qwen/QwQ-32B,deepseek-ai/DeepSeek-V3,deepseek-ai/DeepSeek-R1
+✔️ BOCHA_API_KEY: sk-b71f4859decc427e99f7b0e3fa483469
+================================= Tool Message =================================
+Name: 在线搜索
+
+引用: 1
+标题: LangGraph实战 - 哥不是小萝莉 - 博客园
+URL: https://www.cnblogs.com/smartloli/p/18276355
+摘要: 1.概述 前段时间LangChain发布了LangGraph,它引起了很多关注｡LangGraph 的主要优势在于它能够实现循环工作流,这对于在 LLM 应用程序中模拟类似代理的行为至关重要｡ 2.内容 LangGraph是一个功能强大的库,用于构建基于大型语言模型(LLM)的有状态､多参与者应用程序｡它旨在创建代理和多代理工作流,以实现复杂的任务和交互｡ 2.1 LangGraph的核心优势 LangGraph在设计上具有三个核心优势,使其成为构建代理应用程序的首选框架之一｡ 循环支持 :LangGraph允许用户定义涉及循环的流程,这对于大多数代理架构来说是必不可少的｡这种能力使LangGraph有别于基于有向无环图(DAG)的解决方案,后者不直接支持循环｡ 细粒度控制 :作为一个非常低级的框架,LangGraph为用户提供了对应用程序的流程和状态的细粒度控制｡这对于创建可靠､可预测的代理至关重要,因为代理需要在复杂的环境中做出明智的决策｡ 内置持久性 :LangGraph还包括内置的持久性功能,使代理能够记住过去的交互并使用这些信息来指导未来的决策｡这种持久性还支持高级的人机循环,使代理能够与人类用户进行更自然､更有效的交互｡ 2.2 LangGraph的灵感来源 LangGraph的灵感来自两个著名的数据处理框架:Pregel和Apache Beam｡Pregel是一个用于大规模图处理的系统,它使用一种称为“Pregel模型”的编程模型,该模型基于图的遍历和消息传递｡
+网站名称: 博客园
+发布时间: 2024-06-30T14:21:00Z
+================================== Ai Message ==================================
+
+根据搜索结果，LangGraph 是一个用于构建基于大型语言模型（LLM）的有状态、多参与者应用程序的库。以下是其关键信息总结：
+
+### 核心优势：
+1. **循环支持**  
+   允许定义包含循环的工作流，适合模拟代理（Agent）行为，区别于传统有向无环图（DAG）框架的非循环限制。
+
+2. **细粒度控制**  
+   作为低阶框架，提供对流程和状态的精细控制，有助于构建可靠、可预测的代理系统，使其在复杂环境中做出合理决策。
+
+3. **内置持久性**  
+   支持代理记住历史交互并指导未来决策，同时增强人机交互的自然性和效率。
+
+### 灵感来源：
+- **Pregel**：大规模图处理系统，基于消息传递的编程模型（如图遍历）。  
+- **Apache Beam**：统一编程模型处理批流数据，强调灵活的分发和执行。
+
+### 应用场景：
+适合需要复杂交互、动态循环及状态管理的场景，例如多代理协作、长期任务规划或需要人类循环介入的流程。
+
+如果需要更深入的技术细节或代码示例，可以参考这篇 [博客园文章](https://www.cnblogs.com/smartloli/p/18276355)（发布于2024年6月30日）。

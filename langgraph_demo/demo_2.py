@@ -1,7 +1,7 @@
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from utils.search import bocha_websearch_tool
+from tools.search import bocha_websearch_tool
 from langchain.agents import Tool
 
 # 创建LangChain工具

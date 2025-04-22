@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
 import os
-import streamlit as st
+# import streamlit as st
 
-@st.cache_data
+# @st.cache_data
 def load_env_vars():
     load_dotenv()
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", None)

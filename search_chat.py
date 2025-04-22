@@ -6,7 +6,7 @@ from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
 import streamlit as st
 from utils.envs_util import load_env_vars
-from utils.search import bocha_websearch_tool
+from tools.search import bocha_websearch_tool
 
 # 仅首次执行
 env_vars = load_env_vars()
