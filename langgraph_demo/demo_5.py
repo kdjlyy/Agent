@@ -10,10 +10,9 @@ from langgraph.graph.message import add_messages
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START
 from langchain.agents import Tool
-from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import MemorySaver
-from langgraph.types import Command, interrupt
+
 
 # State 是一个 TypedDict, 其中包含一个键: messages
 # add_messages 是 reducer 函数, 用于将新消息附加到列表中, 而不是覆盖它。
@@ -50,7 +49,7 @@ tool_node = ToolNode(tools=tools)
 graph_builder.add_node("tools", tool_node)
 
 # 添加边
-# tools_condition: 如果最后一条消息包含 tool calls, 则在 conditional_edge 中使用，路由至 ToolNode, 否则路由至末尾
+# tools_condition: 如果最后一条消息包含 tool calls, 则在 conditional_edge 中使用，路由至 tools, 否则路由至末尾
 graph_builder.add_conditional_edges("chatbot", tools_condition)
 # 每当调用一个工具时, 我们都会返回聊天机器人来决定下一步
 graph_builder.add_edge("tools", "chatbot")
