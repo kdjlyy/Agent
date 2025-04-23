@@ -12,6 +12,7 @@ requires-python = ">=3.11"
 dependencies = [
     "dotenv>=0.9.9",
     "grandalf>=0.8",
+    "ipykernel>=6.29.5",
     "ipython>=9.1.0",
     "just>=0.8.162",
     "langchain>=0.3.23",
