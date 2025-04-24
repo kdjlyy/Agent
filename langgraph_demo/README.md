@@ -30,6 +30,7 @@
     3. 使用线程 ID 运行图，直到遇到 `interrupt`
     4. 使用 `invoke`/`ainvoke`/`stream`/`astream` 恢复执行
 
+7. [LangGraph 人工审核](./human_audit.py)
 ---
 
 参考  
