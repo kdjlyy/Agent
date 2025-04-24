@@ -37,23 +37,7 @@
 
 7. [LangGraph 人工审核](./human_review.ipynb)  
 
-   ```mermaid
-   graph TD;
-       __start__([<p>__start__</p>]):::first
-       call_llm(call_llm)
-       run_tool(run_tool)
-       human_review_node(human_review_node)
-       __end__([<p>__end__</p>]):::last
-       __start__ --> call_llm;
-       run_tool --> call_llm;
-       call_llm -.-> __end__;
-       call_llm -.-> human_review_node;
-       human_review_node -.-> call_llm;
-       human_review_node -.-> run_tool;
-       classDef default fill:#f2f0ff,line-height:1.2
-       classDef first fill-opacity:0
-       classDef last fill:#bfb6fc
-   ```
+    ![](./resources/human_audit.png)  
 
     一次人工审核通过的工具调用的流程如下：
     1. 用户输入：“上海天气怎么样？”，生成 `HumanMessage`
@@ -65,21 +49,7 @@
 
 8. [LangGraph 并行执行](./map_reduce.ipynb)  
 
-   ```mermaid
-   graph TD;
-       __start__([<p>__start__</p>]):::first
-       generate_topics(generate_topics)
-       generate_joke(generate_joke)
-       best_joke(best_joke)
-       __end__([<p>__end__</p>]):::last
-       __start__ --> generate_topics;
-       best_joke --> __end__;
-       generate_joke --> best_joke;
-       generate_topics -.-> generate_joke;
-       classDef default fill:#f2f0ff,line-height:1.2
-       classDef first fill-opacity:0
-       classDef last fill:#bfb6fc
-   ```
+    ![](./resources/map_reduce.png)  
     
     Map-Reduce 将一个任务分解为较小的子任务，并行处理每个子任务，并汇总所有已完成子任务的结果。  
     LangGraph 的 `Send` 可以实现类似的功能，将不同的状态（例如，主题）分发到一个节点的多个实例（例如，文章生成）。重要的是，发送的状态可以与核心图的状态不同，从而实现灵活和动态的工作流管理。

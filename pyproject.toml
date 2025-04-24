@@ -22,6 +22,7 @@ dependencies = [
     "langchain-openapi>=0.1.1",
     "langgraph>=0.3.31",
     "matplotlib>=3.10.1",
+    "notebook>=7.4.1",
     "pandas>=2.2.3",
     "pyperclip>=1.9.0",
     "six>=1.17.0",
