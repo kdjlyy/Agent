@@ -27,23 +27,27 @@ def node_a(state: State):
 # node_a是一个子图节点，它返回一个 Command，该 Command 指示 LangGraph 导航到父图中的 node_b 或 node_c
 subgraph = StateGraph(State).add_node(node_a).add_edge(START, "node_a").compile()
 
-def node_b(state: State):
+def node_b(state: State) -> Command[Literal["node_b"]]:
     print("Called B")
     # NOTE: 因为我们已经定义了一个归约器，所以不需要手动向现有的 foo 值添加新字符。
     # reducer 会自动添加这些（通过 operator.add）
     return {"foo": "b"}
 
-def node_c(state: State):
+def node_c(state: State) -> Command[Literal["node_c"]]:
     print("Called C")
     return {"foo": "c"}
 
 builder = StateGraph(State)
 builder.add_edge(START, "subgraph")
 builder.add_node("subgraph", subgraph)
+
+# 这样写做不到可视化
 builder.add_node(node_b)
 builder.add_node(node_c)
 
 graph = builder.compile()
+
+print(graph.get_graph().print_ascii())
 
 res = graph.invoke({"foo": ""})
 print(res)

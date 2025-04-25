@@ -1,10 +1,10 @@
 ## LangGraph 基础 
 
-1. [Command 基本用法](./command_basic_usage.py)  
+1. [Command 基本用法：状态更新和导航](./command_basic_usage.py)  
 
     在同一个节点中既执行状态更新，又决定接下来要前往哪个节点
 
-2. [Command 进阶用法](./command_extend_usage.py)  
+2. [Command 进阶用法：子图导航到父图](./command_extend_usage.py)  
 
     从子图内部导航到父图中的不同节点
 
@@ -84,6 +84,56 @@
     Map-Reduce 将一个任务分解为较小的子任务，并行处理每个子任务，并汇总所有已完成子任务的结果。  
     LangGraph 的 `Send` 可以实现类似的功能，将不同的状态（例如，主题）分发到一个节点的多个实例（例如，文章生成）。重要的是，发送的状态可以与核心图的状态不同，从而实现灵活和动态的工作流管理。
 
+9. [LangGraph 多 Agent 调用（监督者模式）](./multi_agent_supervisor.ipynb)
+
+    ```mermaid
+    graph TD;
+        __start__([<p>__start__</p>]):::first
+        supervisor(supervisor)
+        researcher(researcher)
+        coder(coder)
+        __end__([<p>__end__</p>]):::last
+        __start__ --> supervisor;
+        supervisor -.-> researcher;
+        supervisor -.-> coder;
+        supervisor -.-> __end__;
+        researcher -.-> supervisor;
+        coder -.-> supervisor;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc
+    ```
+
+    多 Agnet 系统的介绍参考：[多 Agent 系统](https://langgraphcn.org/concepts/multi_agent/)  
+
+10. [LangGraph 多 Agent 多轮对话）](./multi_agent_multi_turn_convo.ipynb)  
+
+    ```mermaid
+    graph TD;
+        __start__([<p>__start__</p>]):::first
+        travel_advisor(travel_advisor)
+        hotel_advisor(hotel_advisor)
+        human(human)
+        __start__ --> travel_advisor;
+        travel_advisor -.-> hotel_advisor;
+        travel_advisor -.-> human;
+        hotel_advisor -.-> travel_advisor;
+        hotel_advisor -.-> human;
+        human -.-> hotel_advisor;
+        human -.-> travel_advisor;
+        human -.-> human;
+        classDef default fill:#f2f0ff,line-height:1.2
+        classDef first fill-opacity:0
+        classDef last fill:#bfb6fc
+    ```
+
+    参考：[如何在多智能体应用程序中添加多轮对话](https://langgraphcn.org/how-tos/multi-agent-multi-turn-convo/)
+
+11. [LangGraph 函数式 API](./functional_api.ipynb)
+
+    使用 `@entrypoint` 和 `@task` 装饰器，可以轻松地创建函数式 API。  
+    参考：[函数式 API](https://langgraphcn.org/concepts/functional_api/)
+    
 ---
 
 参考  

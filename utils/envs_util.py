@@ -15,7 +15,8 @@ def load_env_vars():
     if not OPENAI_API_KEY:
         raise ValueError("Please set OPENAI_API_KEY in your environment variables.")
     else:
-        print(f'✔️ OPENAI_API_KEY: {OPENAI_API_KEY}')
+        trans = OPENAI_API_KEY.replace(OPENAI_API_KEY[10:-10], '*' * len(OPENAI_API_KEY[10:-10]))
+        print(f'🙈 OPENAI_API_KEY: {trans}')
 
     if not OPENAI_BASE_URL:
         raise ValueError("Please set OPENAI_BASE_URL in your environment variables.")
@@ -30,7 +31,8 @@ def load_env_vars():
     if not BOCHA_API_KEY:
         raise ValueError("Please set BOCHA_API_KEY in your environment variables.")
     else:
-        print(f'✔️ BOCHA_API_KEY: {BOCHA_API_KEY}')
+        trans = BOCHA_API_KEY.replace(BOCHA_API_KEY[10:-10], '*' * len(BOCHA_API_KEY[10:-10]))
+        print(f'✔️ BOCHA_API_KEY: {trans}')
 
     return {
         "OPENAI_API_KEY": OPENAI_API_KEY,

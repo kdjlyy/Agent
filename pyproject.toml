@@ -17,6 +17,7 @@ dependencies = [
     "just>=0.8.162",
     "langchain>=0.3.23",
     "langchain-community>=0.3.21",
+    "langchain-experimental>=0.3.4",
     "langchain-mcp-adapters>=0.0.9",
     "langchain-openai>=0.3.13",
     "langchain-openapi>=0.1.1",

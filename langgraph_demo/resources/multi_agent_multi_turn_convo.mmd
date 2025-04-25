@@ -1,0 +1,21 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	travel_advisor(travel_advisor)
+	hotel_advisor(hotel_advisor)
+	human(human)
+	__start__ --> travel_advisor;
+	travel_advisor -.-> hotel_advisor;
+	travel_advisor -.-> human;
+	hotel_advisor -.-> travel_advisor;
+	hotel_advisor -.-> human;
+	human -.-> hotel_advisor;
+	human -.-> travel_advisor;
+	human -.-> human;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
