@@ -1,11 +1,15 @@
 import requests
-from langchain.tools import tool
+from langchain_core.tools import tool
+
 from utils.envs_util import load_env_vars
 
+
+# 在LangChain中，我们可以使用`InjectedToolArg`来标记工具中的参数，这些参数将在运行时注入，而不是由模型生成。
+# 这样可以确保某些敏感参数（如user_id）不会被模型生成，但仍然可以在工具调用时传入。
 @tool
-def bocha_websearch_tool(query: str, count: int = 1) -> str:
+def websearch_tool(query: str, count = 1) -> str:
     """
-    使用 Bocha Web Search API 进行网页搜索。
+    使用 Web Search API 进行网页搜索。
     参数:
     - query: 搜索关键词
     - freshness: 搜索的时间范围

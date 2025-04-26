@@ -9,7 +9,7 @@ BOCHA_API_KEY = "sk-b71f4859decc427e99f7b0e3fa483469"
 
 # 定义Bocha Web Search工具
 @tool
-def bocha_websearch_tool(query: str, count: int = 10) -> str:
+def websearch_tool(query: str, count: int = 10) -> str:
     """
     使用Bocha Web Search API 进行网页搜索。
 
@@ -66,9 +66,9 @@ def bocha_websearch_tool(query: str, count: int = 10) -> str:
 
 # 创建LangChain工具
 bocha_tool = Tool(
-    name="BochaWebSearch",
-    func=bocha_websearch_tool,
-    description="使用Bocha Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页URL、网页摘要、网站名称、网站Icon、网页发布时间等。"
+    name="WebSearch",
+    func=websearch_tool,
+    description="使用 Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页URL、网页摘要、网站名称、网站Icon、网页发布时间等。"
 )
 
 # 初始化OpenAI语言模型

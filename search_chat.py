@@ -1,12 +1,14 @@
+import streamlit as st
 from langchain.agents import ConversationalChatAgent, AgentExecutor, Tool
 from langchain.memory import ConversationBufferMemory
+from langchain.schema import AgentAction
 from langchain_community.callbacks import StreamlitCallbackHandler
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
-import streamlit as st
+
+from tools.search import websearch_tool
 from utils.envs_util import load_env_vars
-from tools.search import bocha_websearch_tool
 
 # 仅首次执行
 env_vars = load_env_vars()
@@ -22,7 +24,7 @@ with st.sidebar:
     env_vars['NET_ENABLE'] = st.selectbox(
         label="联网搜索",
         options=['打开','关闭'],
-        index=1,
+        index=0,
         help="选择是否打开联网搜索",
     )
     # 滑动条
@@ -34,13 +36,18 @@ with st.sidebar:
 
 msgs = StreamlitChatMessageHistory()
 memory = ConversationBufferMemory(
-    chat_memory=msgs, return_messages=True, memory_key="chat_history", output_key="output"
+    chat_memory=msgs,
+    return_messages=True,
+    memory_key="chat_history",
+    output_key="output",
 )
+
 if len(msgs.messages) == 0 or st.sidebar.button("重置聊天上下文"):
     msgs.clear()
     msgs.add_ai_message("有问题欢迎向我提问～")
     st.session_state.steps = {}
 
+# openai 的 human 和 ai 角色映射到 streamlit的 user 和 assistant
 avatars = {"human": "user", "ai": "assistant"}
 for idx, msg in enumerate(msgs.messages):
     with st.chat_message(avatars[msg.type]):
@@ -53,6 +60,17 @@ for idx, msg in enumerate(msgs.messages):
                 st.write(step[1])
         st.write(msg.content)
 
+class InjectedParamAgentExecutor(AgentExecutor):
+    def _get_tool_kwargs(self, action: AgentAction) -> dict:
+        # 获取默认工具参数
+        tool_kwargs = super()._get_tool_kwargs(action)
+        # 从内存中提取 count（假设内存中存储了 count）
+        count = self.memory.load_memory_variables({}).get("count", 3)
+        print(f"===> 从内存中提取 count {count}")
+        # 注入参数
+        tool_kwargs["count"] = count
+        return tool_kwargs
+
 if prompt := st.chat_input(placeholder="shift+enter 换行"):
     st.chat_message("user").write(prompt)
     llm = ChatOpenAI(
@@ -63,12 +81,12 @@ if prompt := st.chat_input(placeholder="shift+enter 换行"):
         streaming=True,
     )
     # 创建LangChain工具
-    bocha_tool = Tool(
-        name="BochaWebSearch",
-        func=bocha_websearch_tool,
-        description="使用 Bocha Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页 URL、网页摘要、网站名称、网页发布时间。"
+    search_tool = Tool(
+        name="WebSearch",
+        func=websearch_tool,
+        description="使用 Web Search API 进行搜索互联网网页，输入应为搜索查询字符串，输出将返回搜索结果的详细信息，包括网页标题、网页 URL、网页摘要、网站名称、网页发布时间。"
     )
-    tools = [bocha_tool] if env_vars['NET_ENABLE']=='打开' else []
+    tools = [search_tool] if env_vars['NET_ENABLE']=='打开' else []
     chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
     # AgentExecutor 过时了，不建议使用
     executor = AgentExecutor.from_agent_and_tools(
