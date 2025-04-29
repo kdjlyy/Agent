@@ -13,3 +13,4 @@ wheels/
 .vscode/
 .vscode-test/
 **.ipynb_checkpoints/
+.env
