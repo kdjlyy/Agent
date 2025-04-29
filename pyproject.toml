@@ -10,6 +10,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "chromadb>=1.0.7",
     "dotenv>=0.9.9",
     "grandalf>=0.8",
     "ipykernel>=6.29.5",
@@ -27,6 +28,7 @@ dependencies = [
     "pandas>=2.2.3",
     "pdfminer-six>=20250416",
     "pyperclip>=1.9.0",
+    "pysqlite3-binary>=0.5.4",
     "six>=1.17.0",
     "streamlit>=1.44.1",
     "volcengine-python-sdk>=2.0.1",
