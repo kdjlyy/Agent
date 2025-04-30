@@ -1310,6 +1310,12 @@ wheels = [
 ]
 
 [[package]]
+name = "jieba"
+version = "0.42.1"
+source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
+sdist = { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/c6/cb/18eeb235f833b726522d7ebed54f2278ce28ba9438e3135ab0278d9792a2/jieba-0.42.1.tar.gz", hash = "sha256:055ca12f62674fafed09427f176506079bc135638a14e23e25be909131928db2", size = 19214172, upload_time = "2020-01-20T14:27:23.5Z" }
+
+[[package]]
 name = "jinja2"
 version = "3.1.6"
 source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
@@ -1366,6 +1372,15 @@ wheels = [
     { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/78/0f/77a63ca7aa5fed9a1b9135af57e190d905bcd3702b36aca46a01090d39ad/jiter-0.9.0-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:f0b2827fb88dda2cbecbbc3e596ef08d69bda06c6f57930aec8e79505dc17001", size = 317281, upload_time = "2025-03-10T21:36:22.959Z" },
     { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/f9/39/a3a1571712c2bf6ec4c657f0d66da114a63a2e32b7e4eb8e0b83295ee034/jiter-0.9.0-cp313-cp313t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:062b756ceb1d40b0b28f326cba26cfd575a4918415b036464a52f08632731e5a", size = 350273, upload_time = "2025-03-10T21:36:24.414Z" },
     { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/ee/47/3729f00f35a696e68da15d64eb9283c330e776f3b5789bac7f2c0c4df209/jiter-0.9.0-cp313-cp313t-win_amd64.whl", hash = "sha256:6f7838bc467ab7e8ef9f387bd6de195c43bad82a569c1699cb822f6609dd4cdf", size = 206867, upload_time = "2025-03-10T21:36:25.843Z" },
+]
+
+[[package]]
+name = "joblib"
+version = "1.4.2"
+source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
+sdist = { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/64/33/60135848598c076ce4b231e1b1895170f45fbcaeaa2c9d5e38b04db70c35/joblib-1.4.2.tar.gz", hash = "sha256:2382c5816b2636fbd20a09e0f4e9dad4736765fdfb7dca582943b9c1366b3f0e", size = 2116621, upload_time = "2024-05-02T12:15:05.765Z" }
+wheels = [
+    { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/91/29/df4b9b42f2be0b623cbd5e2140cafcaa2bef0759a00b7b70104dcfe2fb51/joblib-1.4.2-py3-none-any.whl", hash = "sha256:06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6", size = 301817, upload_time = "2024-05-02T12:15:00.765Z" },
 ]
 
 [[package]]
@@ -2348,6 +2363,21 @@ wheels = [
 ]
 
 [[package]]
+name = "nltk"
+version = "3.9.1"
+source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "joblib" },
+    { name = "regex" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/3c/87/db8be88ad32c2d042420b6fd9ffd4a149f9a0d7f0e86b3f543be2eeeedd2/nltk-3.9.1.tar.gz", hash = "sha256:87d127bd3de4bd89a4f81265e5fa59cb1b199b27440175370f7417d2bc7ae868", size = 2904691, upload_time = "2024-08-18T19:48:37.769Z" }
+wheels = [
+    { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/4d/66/7d9e26593edda06e8cb531874633f7c2372279c3b0f46235539fe546df8b/nltk-3.9.1-py3-none-any.whl", hash = "sha256:4fa26829c5b00715afe3061398a8989dc643b92ce7dd93fb4585a70930d168a1", size = 1505442, upload_time = "2024-08-18T19:48:21.909Z" },
+]
+
+[[package]]
 name = "notebook"
 version = "7.4.1"
 source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
@@ -3266,6 +3296,7 @@ dependencies = [
     { name = "grandalf" },
     { name = "ipykernel" },
     { name = "ipython" },
+    { name = "jieba" },
     { name = "just" },
     { name = "langchain" },
     { name = "langchain-community" },
@@ -3275,6 +3306,7 @@ dependencies = [
     { name = "langchain-openapi" },
     { name = "langgraph" },
     { name = "matplotlib" },
+    { name = "nltk" },
     { name = "notebook" },
     { name = "pandas" },
     { name = "pdfminer-six" },
@@ -3292,6 +3324,7 @@ requires-dist = [
     { name = "grandalf", specifier = ">=0.8" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "ipython", specifier = ">=9.1.0" },
+    { name = "jieba", specifier = ">=0.42.1" },
     { name = "just", specifier = ">=0.8.162" },
     { name = "langchain", specifier = ">=0.3.23" },
     { name = "langchain-community", specifier = ">=0.3.21" },
@@ -3301,6 +3334,7 @@ requires-dist = [
     { name = "langchain-openapi", specifier = ">=0.1.1" },
     { name = "langgraph", specifier = ">=0.3.31" },
     { name = "matplotlib", specifier = ">=3.10.1" },
+    { name = "nltk", specifier = ">=3.9.1" },
     { name = "notebook", specifier = ">=7.4.1" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pdfminer-six", specifier = ">=20250416" },
