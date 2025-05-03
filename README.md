@@ -1,34 +1,27 @@
+## 项目链接
 
-1. **项目配置文件**：
-   - `.env`和`.env.example` - 环境变量配置文件
-   - `pyproject.toml` - Python项目依赖配置文件
-   - `requirements.txt` - 传统requirements文件
-   - `uv.lock` - UV包管理器的锁文件
+| 序号  | 模块链接                                                         | 功能简介                                                                                           |
+|-----|--------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| 1   | [LangGraphChatBot](https://github.com/kdjlyy/LangGraphChatBot) | [演示地址](http://14.103.121.86:8090/)<br>基于 LangChain 和 LangGraph 的 AI 聊天机器人，拥有回答问题、生成文章、联网搜索、处理文件等功能 |
+| 2   | [LangGraph 基础](./langgraph_demo/README.md) | LangChain、LangGraph 框架基础使用演示 |
+| 3   | [MCP 服务端和客户端实现](./mcp/README.md) | 基于 FastMCP 实现的 MCP Server 和 MCP Client，支持动态工具调用和交互式对话 |                                                                                                 |
 
-2. **版本控制**：
-   - `.git/` - Git版本控制目录
-   - `.gitignore` - Git忽略规则
+## 目录结构
 
-3. **虚拟环境**：
-   - `.venv/` - Python虚拟环境目录
+> 项目主要使用Python 3.11+，依赖包括LangChain、LangGraph等AI框架，主要用于构建聊天机器人、RAG系统和多代理系统。代码中包含大量Jupyter notebook演示文件(.ipynb)和Python脚本。
 
-4. **主要代码目录**：
-   - `chat_bot/` - 聊天机器人相关代码
-   - `langgraph_demo/` - LangGraph框架演示代码(包含多个demo和notebook)
-   - `langchain_demo/` - LangChain框架演示代码
-   - `mcp/` - 数学计算服务相关代码
-   - `rag/` - RAG(检索增强生成)相关代码和PDF处理
-   - `utils/` - 工具函数(环境变量加载等)
-   - `vector_store/` - 向量存储相关代码
+1. **根目录**：
 
-5. **其他文件**：
-   - `README.md` - 项目说明文档
-   - `run.sh` - 运行脚本
-   - `output.txt` - 输出日志
-   - `.vscode/` - VSCode编辑器配置
+   包含了项目的主要配置文件（如`.env`、`pyproject.toml`等）和运行脚本（如`run.sh`）。
 
-项目主要使用Python 3.11+，依赖包括LangChain、LangGraph等AI框架，主要用于构建聊天机器人、RAG系统和多代理系统。代码中包含大量Jupyter notebook演示文件(.ipynb)和Python脚本。
+2. **子目录**：
+   - `chat_bot/`：聊天机器人相关代码。
+   - `langchain_demo/`：`LangChain`框架演示代码。
+   - `langgraph_demo/`：`LangGraph`框架演示代码，包含多个示例文件和Notebook。
+   - `mcp/`：数学计算服务相关代码。
+   - `rag/`：RAG（检索增强生成）相关代码和PDF处理。
+   - `utils/`：工具函数（如环境变量加载）。
+   - `vector_store/`：向量存储相关代码。
+3. **资源文件**：
 
----
-
-- [LangGraph 基础](./langgraph_demo/README.md)
+   `resources/`目录下存放了生成的`Mermaid`文件，用于可视化图结构。
