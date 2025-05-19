@@ -24,6 +24,7 @@ dependencies = [
     "langchain-openai>=0.3.13",
     "langchain-openapi>=0.1.1",
     "langgraph>=0.3.31",
+    "langsmith>=0.3.31",
     "matplotlib>=3.10.1",
     "mcp>=1.6.0",
     "nltk>=3.9.1",
