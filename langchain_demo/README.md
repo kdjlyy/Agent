@@ -1,3 +1,6 @@
+## 自定义 OutputParser
+[custom_outputparse.ipynb](./custom_outputparse.ipynb)
+
 ## LCEL
 [LCEL.ipynb](./LCEL.ipynb)
 
